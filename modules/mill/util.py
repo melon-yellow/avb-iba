@@ -2,23 +2,29 @@
 ##########################################################################################################################
 
 # Imports
-import os
+import sys
 import json
-from py_wapp import Wapp
+import requests
 
 ##########################################################################################################################
-
-# Get Target JSON
-fileDir = os.path.dirname(os.path.abspath(__file__))
-tarPath = os.path.abspath(os.path.join(fileDir, './target.json'))
-target = json.load(open(tarPath, 'r'))
-
-# Instance Whatsapp
-wapp = Wapp(target)
-
+#                                             UTILIZACAO - LAMINADOR & TREFILA                                           #
 ##########################################################################################################################
 
-# send message
-wapp.send('anthony', 'test message', 'testing')
+# Get Input Params
+timestamp = json.loads(sys.argv[1])
+mill = json.loads(sys.argv[2])
+trf = json.loads(sys.argv[3])
+
+# Request
+requests.post(
+    url = 'http://10.20.6.61:3000/set_util',
+    auth = ('iba.avb', 'sqwenjwe34#'),
+    json = {
+        'action': 'pda_util',
+        't': timestamp,
+        'mill': mill,
+        'trf': trf
+    }
+)
 
 ##########################################################################################################################
