@@ -1,2 +1,6 @@
 
+# Ignore Python Cache
 **/__pycache__/
+
+# Ignore Prevent Billet Json File
+/execute/mill/status.alarm/prevent_billet.json
