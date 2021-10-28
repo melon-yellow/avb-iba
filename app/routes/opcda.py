@@ -2,6 +2,7 @@
 #################################################################################################################################################
 
 # Imports
+import os
 import json
 import flask
 import py_misc
@@ -16,7 +17,7 @@ Response = flask.Response
 
 # Create OPC Client
 client = OpenOPC.client()
-client.connect('iba.ibaPdaOPC.1', 'localhost')
+client.connect(opc_server='iba.ibaPdaOPC.1')
 
 #################################################################################################################################################
 
