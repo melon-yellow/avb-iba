@@ -21,10 +21,10 @@ client.connect(opc_server='iba.ibaPdaOPC.1')
 #################################################################################################################################################
 
 # Load Routes
-def __load__(api: py_misc.API):
+def __load__(app: py_misc.API):
 
     # Iba OPC-DA Read
-    @api.route('/iba/opc/da/', methods=['POST'])
+    @app.route('/iba/opc/da/', methods=['POST'])
     def opcda(req: Request, res: Response):
         try: # Check Request Json
             if ('tags' not in req.json): raise Exception('key "tags" missing in request')
