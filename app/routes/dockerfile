@@ -1,0 +1,7 @@
+
+FROM python:2.7
+
+ADD opcda.py /
+RUN pip install OpenOPC
+
+CMD ["python", "./opcda.py"]
