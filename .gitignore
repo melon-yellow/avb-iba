@@ -6,4 +6,4 @@
 /execute/mill/status.alarm/prevent_billet.json
 
 # env
-**.env
+**/.env
