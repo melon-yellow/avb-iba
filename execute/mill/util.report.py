@@ -2,28 +2,38 @@
 ##########################################################################################################################
 
 # Imports
+import os
 import sys
 import json
 import requests
+import dotenv
 
 ##########################################################################################################################
-#                                                NTM THERMOCOUPLES REPORT                                                #
+
+# Get Enviromental Variables
+dotenv.load_dotenv()
+
+##########################################################################################################################
+#                                             UTILIZACAO - LAMINADOR & TREFILA                                           #
 ##########################################################################################################################
 
 # Get Input Params
 timestamp = json.loads(sys.argv[1])
-params = json.loads(sys.argv[2])
-thermo = json.loads(sys.argv[3])
+mill = json.loads(sys.argv[2])
+trf = json.loads(sys.argv[3])
 
 # Request
 requests.post(
-    url = 'http://gusal2:3000/pda_rod_therm_ntm',
-    auth = ('iba.avb', 'efbuy3uy42ub429d'),
+    url = os.getenv('AVB_IBA_UTIL_REPORT_ADDR'),
+    auth = (
+        os.getenv('AVB_IBA_UTIL_REPORT_USER'),
+        os.getenv('AVB_IBA_UTIL_REPORT_PASSWORD')
+    ),
     json = {
-        'action': 'pda_rod_therm_ntm',
+        'action': 'pda_util',
         't': timestamp,
-        'params': params,
-        'therm': thermo
+        'mill': mill,
+        'trf': trf
     }
 )
 
