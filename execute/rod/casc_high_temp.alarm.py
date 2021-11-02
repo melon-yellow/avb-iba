@@ -31,18 +31,18 @@ _side = str(sys.argv[2])
 manc = str(sys.argv[3])
 
 # Check Inputs
-if not isinstance(std, int):
-    raise Exception('key "std" not valid')
-if not isinstance(_side, str):
-    raise Exception('key "side" not valid')
-if not isinstance(manc, str):
-    raise Exception('key "manc" not valid')
+if not isinstance(std, int): raise Exception('key "std" not valid')
+if not isinstance(_side, str): raise Exception('key "side" not valid')
+if not isinstance(manc, str): raise Exception('key "manc" not valid')
 
+# Get C-Side
 side = 'direito' if _side == 'R' else 'esquerdo'
 
 # message
-msg = ' '.join(('*Atenção!* ⚠️ A temperatura do mancal {} ({})',
-    'da Gaiola {} chegou acima de 95 graus!')).format(side, manc, std)
+msg = ' '.join(
+    (f'*Atenção!* ⚠️ A temperatura do mancal {side} ({manc})',
+    f'da Gaiola {std} chegou acima de 95 graus!')
+)
 
 # log
 log = 'iba::pda_rod_ntm_casc_temp_alarm'

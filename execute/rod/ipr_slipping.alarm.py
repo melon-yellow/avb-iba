@@ -33,7 +33,7 @@ if not isinstance(ipr, int):
     raise Exception('key "ipr" not valid')
 
 # message
-msg = '*Atenção!* ⚠️ O pinch roll 0{} está patinando!'.format(ipr)
+msg = f'*Atenção!* ⚠️ O pinch roll 0{ipr} está patinando!'
 
 # log
 log = 'iba::pda_rod_ipr_slip_alarm'

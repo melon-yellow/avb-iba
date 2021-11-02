@@ -63,9 +63,8 @@ def cause(
             # Iter Over Areas 
             for area in plc:
                 i = -1
-                comp = '<{}/{}/{}>'.format(p, area, '{}')
-                if text == comp.format('SB'): i = len(plc)
-                if text == comp.format('PB'): i = 0
+                if text == f'<{p}/{area}/SB>': i = len(plc)
+                if text == f'<{p}/{area}/PB>': i = 0
                 if i < 0: continue
                 # Update Text
                 a = plc.index(area)

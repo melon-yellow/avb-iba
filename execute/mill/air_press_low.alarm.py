@@ -29,12 +29,14 @@ avbot = Wapp({
 press = float(sys.argv[1])
 
 # On Alarm
-if not isinstance(press, int) or not isinstance(press, float):
+if not isinstance(press, int) and not isinstance(press, float):
     raise Exception('key "press" not valid')
 
 # message
-msg = ' '.join(('*Atenção!* ⚠️ A pressão de Ar Comprimido',
-    'do Laminador chegou abaixo de {} Bar!')).format(press)
+msg = ' '.join(
+    ('*Atenção!* ⚠️ A pressão de Ar Comprimido',
+    f'do Laminador chegou abaixo de {press} Bar!')
+)
 
 # log
 log = 'iba::pda_mill_air_press_low'

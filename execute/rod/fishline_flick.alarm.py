@@ -36,7 +36,7 @@ if not isinstance(_fl, int):
 fl = ('principal' if _fl != 0 else 'da Breakout Box')
 
 # message
-msg = '*Atenção!* ⚠️ O Fishline {} piscou!'.format(fl)
+msg = f'*Atenção!* ⚠️ O Fishline {fl} piscou!'
 
 # log
 log = 'iba::pda_rod_fishline_flick_alarm'

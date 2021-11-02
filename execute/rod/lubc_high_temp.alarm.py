@@ -33,8 +33,10 @@ if not isinstance(temp, int):
     raise Exception('key "temp" not valid')
 
 # message
-msg = ' '.join(('*Atenção!* ⚠️ A temperatura do óleo da',
-    'lub-C chegou acima de {} graus!')).format(temp)
+msg = ' '.join(
+    ('*Atenção!* ⚠️ A temperatura do óleo da',
+    f'lub-C chegou acima de {temp} graus!')
+)
 
 # log
 log = 'iba::pda_rod_lubc_high_temp_alarm'

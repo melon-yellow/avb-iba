@@ -37,10 +37,10 @@ if not isinstance(std, int):
     raise Exception('key "std" not valid')
 
 # message
-msg = '*Atenção!* ⚠️ O Torque da gaiola {} está anormal!'.format(std)
+msg = f'*Atenção!* ⚠️ O Torque da gaiola {std} está anormal!'
 
 # log
-log = 'iba::pda_mill_m_off({})'.format(std)
+log = f'iba::pda_mill_m_off({std})'
 
 # send message
 avbot.send('anthony', msg, log)

@@ -31,16 +31,12 @@ valve = str(sys.argv[2])
 _gas = str(sys.argv[3])
 
 # Check Inputs
-if not isinstance(_zone, str):
-    raise Exception('key "N" not valid')
-if not isinstance(valve, str):
-    raise Exception('key "valve" not valid')
-if not isinstance(_gas, str):
-    raise Exception('key "GA" not valid')
+if not isinstance(_zone, str): raise Exception('key "N" not valid')
+if not isinstance(valve, str): raise Exception('key "valve" not valid')
+if not isinstance(_gas, str): raise Exception('key "GA" not valid')
 
 # Check Valve Letter
-if len(valve) != 1:
-    raise Exception('key "valve" not valid')
+if len(valve) != 1: raise Exception('key "valve" not valid')
 
 # Get Furnace Zone
 zone = ''
@@ -63,16 +59,12 @@ elif _gas == 'A':
 else:
     raise Exception('key "GA" not valid')
 
-# Get Valve Name
-tm = 'UV' + _zone + '{}' + valve
-vnames = '({}/{})'.format(
-    tm.format(nv[0]),
-    tm.format(nv[1])
-)
-
 # message
-msg = ' '.join(('*Atenção!* ⚠️ A temperatura está alta na Linha de',
-    '{} ({}) da Zona de {} do forno! {}')).format(gas, valve, zone, vnames)
+msg = ' '.join(
+    ('*Atenção!* ⚠️ A temperatura está alta na Linha de',
+    f'{gas} ({valve}) da Zona de {zone} do forno!',
+    f'(UV{_zone}{nv[0]}{valve}/UV{_zone}{nv[1]}{valve})')
+)
         
 # log
 log = 'iba::pda_rhf_high_temp_alarm'

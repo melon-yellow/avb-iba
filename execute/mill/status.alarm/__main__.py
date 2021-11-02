@@ -55,7 +55,7 @@ if status not in switcher:
     raise Exception('status not valid')
 
 # Get Message Text
-log = 'iba::pda_mill_status({})'.format(status)
+log = f'iba::pda_mill_status({status})'
 msg = switcher[status]
 
 # Gap-Off First Fault
@@ -68,7 +68,7 @@ if status == 'gap_off':
 if status == 'cobble' or status == 'gap_off':
     cause = prevent_billet.cause(data, status)
     if isinstance(cause, str) and cause != '':
-        msg = (msg + '\n' + '_Motivo: ' + cause + '_')
+        msg = f'{msg}\n_Motivo: {cause}_'
 
 # Send only Start/Stop Messages
 if status != 'exit_fur':
