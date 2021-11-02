@@ -2,6 +2,7 @@
 #################################################################################################################################################
 
 # Imports
+import os
 import json
 import flask
 import py_misc
@@ -50,6 +51,7 @@ def __load__(app: py_misc.API):
         )
 
     # Set Endnode Authentication
-    opcda.user('iba.opc.client').password('sqw9eeq@2y2n985njwe34#')
+    opcda.user(os.getenv('AVB_IBA_OPC_USER'))
+    opcda.password(os.getenv('AVB_IBA_OPC_PASSWORD'))
 
 #################################################################################################################################################
