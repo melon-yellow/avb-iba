@@ -51,7 +51,7 @@ def __load__(app: py_misc.API):
         )
 
     # Set Endnode Authentication
-    opcda.user(os.getenv('AVB_IBA_OPC_USER'))
-    opcda.password(os.getenv('AVB_IBA_OPC_PASSWORD'))
+    opcda.user(os.getenv('AVB_IBA_OPC_DA_USER'))
+    opcda.password(os.getenv('AVB_IBA_OPC_DA_PASSWORD'))
 
 #################################################################################################################################################
