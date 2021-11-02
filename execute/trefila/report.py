@@ -6,13 +6,12 @@ import os
 import sys
 import json
 import requests
+import dotenv
 
 ##########################################################################################################################
 
-# Get Target JSON
-fileDir = os.path.dirname(os.path.abspath(__file__))
-tarPath = os.path.abspath(os.path.join(fileDir, '../../whatsapp/target.gusal2.json'))
-target = json.load(open(tarPath, 'r'))
+# Get Enviromental Variables
+dotenv.load_dotenv()
 
 ##########################################################################################################################
 #                                                   LUB-C HIGH TEMP ALARM                                                #
@@ -24,10 +23,10 @@ util = json.loads(sys.argv[2])
 
 # Request
 requests.post(
-    url = target['addr'],
+    url = os.getenv('WHATSAPP_TARGET_GUSAL2_ADDR'),
     auth = (
-        target['auth']['user'],
-        target['auth']['password']
+        os.getenv('WHATSAPP_TARGET_GUSAL2_USER'),
+        os.getenv('WHATSAPP_TARGET_GUSAL2_PASSWORD')
     ),
     json = {
         'action': 'pda_trf_report',

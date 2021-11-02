@@ -4,18 +4,22 @@
 # Imports
 import os
 import sys
-import json
+import dotenv
 from py_wapp import Wapp
 
 ##########################################################################################################################
 
-# Get Target JSON
-fileDir = os.path.dirname(os.path.abspath(__file__))
-tarPath = os.path.abspath(os.path.join(fileDir, '../../whatsapp/target.json'))
-target = json.load(open(tarPath, 'r'))
+# Get Enviromental Variables
+dotenv.load_dotenv()
 
 # Instance Whatsapp
-avbot = Wapp(target)
+avbot = Wapp({
+    'addr': os.getenv('WHATSAPP_TARGET_ADDR'),
+    'auth':{
+        'user': os.getenv('WHATSAPP_TARGET_USER'),
+        'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    }
+})
 
 ##########################################################################################################################
 #                                                 NTM CASQUILHOS TEMP ALARM                                              #
@@ -41,7 +45,7 @@ msg = ' '.join(('*Atenção!* ⚠️ A temperatura do mancal {} ({})',
     'da Gaiola {} chegou acima de 95 graus!')).format(side, manc, std)
 
 # log
-log = 'py_avbot_iba::pda_rod_ntm_casc_temp_alarm'
+log = 'iba::pda_rod_ntm_casc_temp_alarm'
 
 # send message
 avbot.send('grupo_supervisores', msg, log)

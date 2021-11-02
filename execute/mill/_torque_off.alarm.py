@@ -5,17 +5,22 @@
 import os
 import sys
 import json
+import dotenv
 from py_wapp import Wapp
 
 ##########################################################################################################################
 
-# Get Target JSON
-fileDir = os.path.dirname(os.path.abspath(__file__))
-tarPath = os.path.abspath(os.path.join(fileDir, '../../whatsapp/target.json'))
-target = json.load(open(tarPath, 'r'))
+# Get Enviromental Variables
+dotenv.load_dotenv()
 
 # Instance Whatsapp
-avbot = Wapp(target)
+avbot = Wapp({
+    'addr': os.getenv('WHATSAPP_TARGET_ADDR'),
+    'auth':{
+        'user': os.getenv('WHATSAPP_TARGET_USER'),
+        'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    }
+})
 
 ##########################################################################################################################
 #                                                      TORQUE ALARME                                                     #
@@ -33,7 +38,7 @@ if not isinstance(std, int):
 msg = '*Atenção!* ⚠️ O Torque da gaiola {} está anormal!'.format(std)
 
 # log
-log = 'py_avbot_iba::pda_mill_m_off({})'.format(std)
+log = 'iba::pda_mill_m_off({})'.format(std)
 
 # send message
 avbot.send('anthony', msg, log)

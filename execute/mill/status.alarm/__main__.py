@@ -5,6 +5,7 @@
 import os
 import sys
 import json
+import dotenv
 from py_wapp import Wapp
 
 # Modules
@@ -12,14 +13,17 @@ import prevent_billet
 
 ##########################################################################################################################
 
-# Get Target JSON
-fileDir = os.path.dirname(os.path.abspath(__file__))
-pbPath = os.path.abspath(os.path.join(fileDir, './prevent_billet.json'))
-tarPath = os.path.abspath(os.path.join(fileDir, '../../../whatsapp/target.json'))
-target = json.load(open(tarPath, 'r'))
+# Get Enviromental Variables
+dotenv.load_dotenv()
 
 # Instance Whatsapp
-avbot = Wapp(target)
+avbot = Wapp({
+    'addr': os.getenv('WHATSAPP_TARGET_ADDR'),
+    'auth':{
+        'user': os.getenv('WHATSAPP_TARGET_USER'),
+        'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    }
+})
 
 ##########################################################################################################################
 #                                                      PDA MILL STATUS                                                   #
@@ -51,12 +55,13 @@ if status not in switcher:
     raise Exception('status not valid')
 
 # Get Message Text
-log = 'py_avbot_iba::pda_mill_status({})'.format(status)
+log = 'iba::pda_mill_status({})'.format(status)
 msg = switcher[status]
 
 # Gap-Off First Fault
 if status == 'gap_off':
-    # Read from JSON File
+    fileDir = os.path.dirname(os.path.abspath(__file__))
+    pbPath = os.path.abspath(os.path.join(fileDir, './prevent_billet.json'))
     data = json.load(open(pbPath, 'r'))
 
 # Get Cause

@@ -17,7 +17,7 @@ trf = json.loads(sys.argv[3])
 
 # Request
 requests.post(
-    url = 'http://10.20.6.61:3000/set_util',
+    url = 'http://gusal2:3000/set_util',
     auth = ('iba.avb', 'sqwenjwe34#'),
     json = {
         'action': 'pda_util',

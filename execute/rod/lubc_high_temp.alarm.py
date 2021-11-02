@@ -4,18 +4,22 @@
 # Imports
 import os
 import sys
-import json
+import dotenv
 from py_wapp import Wapp
 
 ##########################################################################################################################
 
-# Get Target JSON
-fileDir = os.path.dirname(os.path.abspath(__file__))
-tarPath = os.path.abspath(os.path.join(fileDir, '../../whatsapp/target.json'))
-target = json.load(open(tarPath, 'r'))
+# Get Enviromental Variables
+dotenv.load_dotenv()
 
 # Instance Whatsapp
-avbot = Wapp(target)
+avbot = Wapp({
+    'addr': os.getenv('WHATSAPP_TARGET_ADDR'),
+    'auth':{
+        'user': os.getenv('WHATSAPP_TARGET_USER'),
+        'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    }
+})
 
 ##########################################################################################################################
 #                                                   LUB-C HIGH TEMP ALARM                                                #
@@ -33,7 +37,7 @@ msg = ' '.join(('*Atenção!* ⚠️ A temperatura do óleo da',
     'lub-C chegou acima de {} graus!')).format(temp)
 
 # log
-log = 'py_avbot_iba::pda_rod_lubc_high_temp_alarm'
+log = 'iba::pda_rod_lubc_high_temp_alarm'
 
 # send message
 avbot.send('grupo_supervisores', msg, log)

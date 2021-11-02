@@ -4,18 +4,22 @@
 # Imports
 import os
 import sys
-import json
+import dotenv
 from py_wapp import Wapp
 
 ##########################################################################################################################
 
-# Get Target JSON
-fileDir = os.path.dirname(os.path.abspath(__file__))
-tarPath = os.path.abspath(os.path.join(fileDir, '../../whatsapp/target.json'))
-target = json.load(open(tarPath, 'r'))
+# Get Enviromental Variables
+dotenv.load_dotenv()
 
 # Instance Whatsapp
-avbot = Wapp(target)
+avbot = Wapp({
+    'addr': os.getenv('WHATSAPP_TARGET_ADDR'),
+    'auth':{
+        'user': os.getenv('WHATSAPP_TARGET_USER'),
+        'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    }
+})
 
 ##########################################################################################################################
 #                                                    FISHLINE FLICK ALARM                                                #
@@ -35,7 +39,7 @@ fl = ('principal' if _fl != 0 else 'da Breakout Box')
 msg = '*Atenção!* ⚠️ O Fishline {} piscou!'.format(fl)
 
 # log
-log = 'py_avbot_iba::pda_rod_fishline_flick_alarm'
+log = 'iba::pda_rod_fishline_flick_alarm'
 
 # send message
 avbot.send('grupo_supervisores', msg, log)
