@@ -52,7 +52,7 @@ switcher = dict(
 
 # Check Status Key
 if status not in switcher:
-    raise Exception('status not valid')
+    raise Exception('key "status" not valid')
 
 # Get Message Text
 log = f'iba::pda_mill_status({status})'
@@ -66,17 +66,17 @@ if status == 'gap_off':
 
 # Get Cause
 if status == 'cobble' or status == 'gap_off':
-    cause = prevent_billet.cause(data, status)
+    cause = prevent_billet.cause(data=data, status=status)
     if isinstance(cause, str) and cause != '':
         msg = f'{msg}\n_Motivo: {cause}_'
 
 # Send only Start/Stop Messages
 if status != 'exit_fur':
-    avbot.send('gerencia_laminacao', msg, log)
+    avbot.send(to='gerencia_laminacao', text=msg, log=log)
 
 # Send Messages
-avbot.send('grupo_supervisores', msg, log)
-avbot.send('anthony', msg, log)
+avbot.send(to='grupo_supervisores', text=msg, log=log)
+avbot.send(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################
 

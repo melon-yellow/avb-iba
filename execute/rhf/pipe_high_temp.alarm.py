@@ -70,9 +70,9 @@ msg = ' '.join(
 log = 'iba::pda_rhf_high_temp_alarm'
 
 # send message
-avbot.send('laminador_mantenedores', msg, log)
-avbot.send('grupo_supervisores', msg, log)
-avbot.send('joao_paulo', msg, log)
-avbot.send('anthony', msg, log)
+avbot.send(to='laminador_mantenedores', text=msg, log=log)
+avbot.send(to='grupo_supervisores', text=msg, log=log)
+avbot.send(to='joao_paulo', text=msg, log=log)
+avbot.send(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################

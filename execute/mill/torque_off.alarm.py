@@ -33,7 +33,7 @@ t = json.loads(sys.argv[1])
 std = int(sys.argv[2])
 
 # Check Inputs
-if not isinstance(std, int):
+if not isinstance(std, (int, float)):
     raise Exception('key "std" not valid')
 
 # message
@@ -43,6 +43,6 @@ msg = f'*Atenção!* ⚠️ O Torque da gaiola {std} está anormal!'
 log = f'iba::pda_mill_m_off({std})'
 
 # send message
-avbot.send('anthony', msg, log)
+avbot.send(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################

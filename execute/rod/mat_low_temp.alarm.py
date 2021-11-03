@@ -42,9 +42,9 @@ msg = ' '.join(
 log = 'iba::pda_rod_low_temp_alarm'
 
 # send message
-avbot.send('grupo_supervisores', msg, log)
-avbot.send('grupo_automation', msg, log)
-avbot.send('joao_paulo', msg, log)
-avbot.send('anthony', msg, log)
+avbot.send(to='grupo_supervisores', text=msg, log=log)
+avbot.send(to='grupo_automation', text=msg, log=log)
+avbot.send(to='joao_paulo', text=msg, log=log)
+avbot.send(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################

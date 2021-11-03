@@ -17,7 +17,7 @@ from . import prevent_billet
 data = json.loads(sys.argv[1])
 
 # Check Received Data
-cause = prevent_billet.cause(data, 'gap_off')
+cause = prevent_billet.cause(data=data, status='gap_off')
 if not isinstance(cause, str) or cause == '':
     raise Exception('data not valid')
 

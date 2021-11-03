@@ -36,7 +36,9 @@ if not isinstance(_side, str): raise Exception('key "side" not valid')
 if not isinstance(manc, str): raise Exception('key "manc" not valid')
 
 # Get C-Side
-side = 'direito' if _side == 'R' else 'esquerdo'
+side = '-'
+if _side == 'R': side = 'direito'
+if _side == 'E': side = 'esquerdo'
 
 # message
 msg = ' '.join(
@@ -48,9 +50,9 @@ msg = ' '.join(
 log = 'iba::pda_rod_ntm_casc_temp_alarm'
 
 # send message
-avbot.send('grupo_supervisores', msg, log)
-avbot.send('grupo_automation', msg, log)
-avbot.send('joao_paulo', msg, log)
-avbot.send('anthony', msg, log)
+avbot.send(to='grupo_supervisores', text=msg, log=log)
+avbot.send(to='grupo_automation', text=msg, log=log)
+avbot.send(to='joao_paulo', text=msg, log=log)
+avbot.send(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################

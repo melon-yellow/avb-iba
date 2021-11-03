@@ -29,7 +29,7 @@ avbot = Wapp({
 press = float(sys.argv[1])
 
 # On Alarm
-if not isinstance(press, int) and not isinstance(press, float):
+if not isinstance(press, (int, float)):
     raise Exception('key "press" not valid')
 
 # message
@@ -42,8 +42,8 @@ msg = ' '.join(
 log = 'iba::pda_mill_air_press_low'
 
 # send message
-avbot.send('anthony', msg, log)
-avbot.send('laminador_mantenedores', msg, log)
-avbot.send('joao_paulo', msg, log)
+avbot.send(to='laminador_mantenedores', text=msg, log=log)
+avbot.send(to='joao_paulo', text=msg, log=log)
+avbot.send(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################
