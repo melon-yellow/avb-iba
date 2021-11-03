@@ -41,7 +41,6 @@ log = 'iba::pda_rod_ipr_slip_alarm'
 # send message
 avbot.send(to='grupo_supervisores', text=msg, log=log)
 avbot.send(to='grupo_automation', text=msg, log=log)
-avbot.send(to='joao_paulo', text=msg, log=log)
 avbot.send(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################
