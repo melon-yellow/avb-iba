@@ -2,6 +2,10 @@
 # cache
 **/__pycache__/
 
+# dependencies
+/execute/src/
+/app/src/
+
 # temp json file
 /execute/mill/status.alarm/prevent_billet.json
 
