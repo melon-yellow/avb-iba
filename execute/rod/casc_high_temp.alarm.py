@@ -50,6 +50,7 @@ msg = ' '.join(
 log = 'iba::pda_rod_ntm_casc_temp_alarm'
 
 # send message
+avbot.send(to='laminador_mantenedores', text=msg, log=log)
 avbot.send(to='grupo_supervisores', text=msg, log=log)
 avbot.send(to='grupo_automation', text=msg, log=log)
 avbot.send(to='anthony', text=msg, log=log)
