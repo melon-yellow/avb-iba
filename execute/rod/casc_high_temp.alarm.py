@@ -35,10 +35,15 @@ if not isinstance(std, int): raise Exception('key "std" not valid')
 if not isinstance(_side, str): raise Exception('key "side" not valid')
 if not isinstance(manc, str): raise Exception('key "manc" not valid')
 
+# Ignore Disabled
+if std == 27:
+    if _side == 'R' and manc == 'B': raise Exception('disabled')
+    if _side == 'L' and manc == 'A': raise Exception('disabled')
+
 # Get C-Side
 side = '-'
 if _side == 'R': side = 'direito'
-if _side == 'E': side = 'esquerdo'
+if _side == 'L': side = 'esquerdo'
 
 # message
 msg = ' '.join(
