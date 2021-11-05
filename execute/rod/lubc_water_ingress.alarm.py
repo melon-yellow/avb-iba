@@ -26,20 +26,16 @@ avbot = Wapp({
 ##########################################################################################################################
 
 # Get Input Params
-aw = str(sys.argv[1])
+aw = int(sys.argv[1])
 
 # Check Inputs
-if not isinstance(aw, str):
+if not isinstance(aw, int):
     raise Exception('key "aw" not valid')
-
-ingress = ''
-if aw == 'A': ingress = '0.7'
-if aw == 'W': ingress = '0.9'
 
 # message
 msg = ' '.join(
-    ('*Atenção!* ⚠️ A concentração de água no óleo da',
-    f'lub-C chegou acima de {ingress} ppm !')
+    ('*Atenção!* ⚠️ A umidade relativa do óleo da',
+    f'lub-C chegou acima de {aw}% !')
 )
 
 # log
