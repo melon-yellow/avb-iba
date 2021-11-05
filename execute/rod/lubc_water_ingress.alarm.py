@@ -38,8 +38,8 @@ if aw == 'W': ingress = '0.9'
 
 # message
 msg = ' '.join(
-    ('*Atenção!* ⚠️ A presença de água no óleo da',
-    f'lub-C chegou acima de {ingress}% !')
+    ('*Atenção!* ⚠️ A concentração de água no óleo da',
+    f'lub-C chegou acima de {ingress} ppm !')
 )
 
 # log
