@@ -27,24 +27,24 @@ avbot = Wapp({
 
 # Get Input Params
 std = int(sys.argv[1])
-_side = str(sys.argv[2])
+sd = str(sys.argv[2])
 manc = str(sys.argv[3])
 
 # Check Inputs
 if not isinstance(std, int): raise Exception('key "std" not valid')
-if not isinstance(_side, str): raise Exception('key "side" not valid')
+if not isinstance(sd, str): raise Exception('key "side" not valid')
 if not isinstance(manc, str): raise Exception('key "manc" not valid')
 
 # Get Casc-Side
 side = '-'
-if _side == 'R': side = 'direito'
-if _side == 'L': side = 'esquerdo'
+if sd == 'R': side = 'direito'
+if sd == 'L': side = 'esquerdo'
 
 # message
-msg = ' '.join(
-    (f'*Atenção!* ⚠️ A temperatura do mancal {side} ({manc})',
-    f'da Gaiola {std} chegou acima de 95 graus!')
-)
+msg = ' '.join([
+    f'*Atenção!* ⚠️ A temperatura do mancal {side} ({manc})',
+    f'da Gaiola {std} chegou acima de 95° C !'
+])
 
 # log
 log = 'iba::pda_rod_ntm_casc_temp_alarm'

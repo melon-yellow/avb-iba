@@ -33,10 +33,10 @@ if not isinstance(press, (int, float)):
     raise Exception('key "press" not valid')
 
 # message
-msg = ' '.join(
-    ('*Atenção!* ⚠️ A pressão de Ar Comprimido',
-    f'do Laminador chegou abaixo de {press} Bar!')
-)
+msg = ' '.join([
+    '*Atenção!* ⚠️ A pressão de Ar Comprimido',
+    f'do Laminador chegou abaixo de {press} Bar!'
+])
 
 # log
 log = 'iba::pda_mill_air_press_low'

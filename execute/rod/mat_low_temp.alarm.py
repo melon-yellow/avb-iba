@@ -33,10 +33,10 @@ if not isinstance(temp, int):
     raise Exception('key "temp" not valid')
 
 # message
-msg = ' '.join(
-    ('*Atenção!* ⚠️ A temperatura na entrada',
-    f'do bloco chegou abaixo de {temp} graus!')
-)
+msg = ' '.join([
+    '*Atenção!* ⚠️ A temperatura na entrada',
+    f'do bloco chegou abaixo de {temp}° C !'
+])
 
 # log
 log = 'iba::pda_rod_low_temp_alarm'

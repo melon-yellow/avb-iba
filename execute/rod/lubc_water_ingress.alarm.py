@@ -33,10 +33,10 @@ if not isinstance(aw, int):
     raise Exception('key "aw" not valid')
 
 # message
-msg = ' '.join(
-    ('*Atenção!* ⚠️ A umidade relativa do óleo da',
-    f'lub-C chegou acima de {aw}% !')
-)
+msg = ' '.join([
+    '*Atenção!* ⚠️ A umidade relativa do óleo',
+    f'da lub-C chegou acima de {aw}% !'
+])
 
 # log
 log = 'iba::pda_rod_lubc_water_ingress'

@@ -26,14 +26,16 @@ avbot = Wapp({
 ##########################################################################################################################
 
 # Get Input Params
-_fl = int(sys.argv[1])
+index = int(sys.argv[1])
 
 # On Alarm
-if not isinstance(_fl, int):
-    raise Exception('key "fl" not valid')
+if not isinstance(index, int):
+    raise Exception('key "index" not valid')
 
 # Select Fishline
-fl = 'principal' if _fl else 'da Breakout Box'
+fl = '-'
+if index == 1: fl = 'do bloco'
+if index == 0: fl = 'da Breakout Box'
 
 # message
 msg = f'*Atenção!* ⚠️ O Fishline {fl} piscou!'
