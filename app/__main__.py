@@ -12,7 +12,9 @@ from . import routes
 
 # Declare HTTP App
 app = py_misc.Express()
-app.port(os.getenv('AVB_IBA_PORT'))
+app.port(
+    int(os.getenv('AVB_IBA_PORT'))
+)
 
 #################################################################################################################################################
 
