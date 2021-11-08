@@ -14,11 +14,9 @@ dotenv.load_dotenv()
 
 # Instance Whatsapp
 avbot = Wapp({
-    'addr': os.getenv('WHATSAPP_TARGET_ADDR'),
-    'auth':{
-        'user': os.getenv('WHATSAPP_TARGET_USER'),
-        'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
-    }
+    'address': os.getenv('WHATSAPP_TARGET_ADDRESS'),
+    'user': os.getenv('WHATSAPP_TARGET_USER'),
+    'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
 })
 
 ##########################################################################################################################
@@ -42,9 +40,9 @@ msg = ' '.join([
 log = 'iba::pda_rod_lubc_water_ingress'
 
 # send message
-avbot.send(to='laminador_mantenedores', text=msg, log=log)
-avbot.send(to='grupo_supervisores', text=msg, log=log)
-avbot.send(to='grupo_automation', text=msg, log=log)
-avbot.send(to='anthony', text=msg, log=log)
+avbot.sends(to='laminador_mantenedores', text=msg, log=log)
+avbot.sends(to='grupo_supervisores', text=msg, log=log)
+avbot.sends(to='grupo_automation', text=msg, log=log)
+avbot.sends(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################

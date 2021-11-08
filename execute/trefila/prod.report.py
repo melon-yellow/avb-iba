@@ -23,7 +23,7 @@ util = json.loads(sys.argv[2])
 
 # Request
 requests.post(
-    url = os.getenv('WHATSAPP_TARGET_GUSAL2_ADDR'),
+    url = os.getenv('WHATSAPP_TARGET_GUSAL2_ADDRESS'),
     auth = (
         os.getenv('WHATSAPP_TARGET_GUSAL2_USER'),
         os.getenv('WHATSAPP_TARGET_GUSAL2_PASSWORD')

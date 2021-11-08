@@ -18,11 +18,9 @@ dotenv.load_dotenv()
 
 # Instance Whatsapp
 avbot = Wapp({
-    'addr': os.getenv('WHATSAPP_TARGET_ADDR'),
-    'auth':{
-        'user': os.getenv('WHATSAPP_TARGET_USER'),
-        'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
-    }
+    'address': os.getenv('WHATSAPP_TARGET_ADDRESS'),
+    'user': os.getenv('WHATSAPP_TARGET_USER'),
+    'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
 })
 
 ##########################################################################################################################
@@ -72,11 +70,11 @@ if status == 'cobble' or status == 'gap_off':
 
 # Send only Start/Stop Messages
 if status != 'exit_fur':
-    avbot.send(to='gerencia_laminacao', text=msg, log=log)
+    avbot.sends(to='gerencia_laminacao', text=msg, log=log)
 
 # Send Messages
-avbot.send(to='grupo_supervisores', text=msg, log=log)
-avbot.send(to='anthony', text=msg, log=log)
+avbot.sends(to='grupo_supervisores', text=msg, log=log)
+avbot.sends(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################
 

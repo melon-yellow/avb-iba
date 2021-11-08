@@ -17,11 +17,9 @@ dotenv.load_dotenv()
 
 # Instance Whatsapp
 avbot = Wapp({
-    'addr': os.getenv('WHATSAPP_TARGET_ADDR'),
-    'auth':{
-        'user': os.getenv('WHATSAPP_TARGET_USER'),
-        'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
-    }
+    'address': os.getenv('WHATSAPP_TARGET_ADDRESS'),
+    'user': os.getenv('WHATSAPP_TARGET_USER'),
+    'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
 })
 
 ##########################################################################################################################
@@ -43,6 +41,6 @@ msg = f'*Atenção!* ⚠️ O Torque da gaiola {std} está anormal!'
 log = f'iba::pda_mill_m_off({std})'
 
 # send message
-avbot.send(to='anthony', text=msg, log=log)
+avbot.sends(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################

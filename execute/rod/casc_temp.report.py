@@ -24,7 +24,7 @@ thermo = json.loads(sys.argv[3])
 
 # Request
 requests.post(
-    url = os.getenv('AVB_IBA_NTM_TEMP_REPORT_ADDR'),
+    url = os.getenv('AVB_IBA_NTM_TEMP_REPORT_ADDRESS'),
     auth = (
         os.getenv('AVB_IBA_NTM_TEMP_REPORT_USER'),
         os.getenv('AVB_IBA_NTM_TEMP_REPORT_PASSWORD')

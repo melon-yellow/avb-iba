@@ -3,7 +3,6 @@
 
 # Imports
 import json
-from typing import List
 
 ##########################################################################################################################
 #                                                   PDA MILL STATUS CAUSE                                                #
@@ -12,9 +11,9 @@ from typing import List
 # Get General Cause
 def cause(
     data: dict[str,
-        List[str] | dict[
+        list[str] | dict[
             str,
-            List[str]
+            list[str]
         ]
     ],
     status: str

@@ -22,7 +22,7 @@ client.connect(opc_server='iba.ibaPdaOPC.1')
 #################################################################################################################################################
 
 # Load Routes
-def __load__(app: py_misc.API):
+def __load__(app: py_misc.Express):
 
     # Iba OPC-DA Read
     @app.route('/iba/opc/da/', methods=['POST'])
@@ -51,7 +51,9 @@ def __load__(app: py_misc.API):
         )
 
     # Set Endnode Authentication
-    opcda.user(os.getenv('AVB_IBA_OPC_DA_USER'))
-    opcda.password(os.getenv('AVB_IBA_OPC_DA_PASSWORD'))
+    opcda.users.update({
+        os.getenv('AVB_IBA_OPC_DA_USER'):
+        os.getenv('AVB_IBA_OPC_DA_PASSWORD')
+    })
 
 #################################################################################################################################################

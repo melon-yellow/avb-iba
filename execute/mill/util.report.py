@@ -24,7 +24,7 @@ trf = json.loads(sys.argv[3])
 
 # Request
 requests.post(
-    url = os.getenv('AVB_IBA_UTIL_REPORT_ADDR'),
+    url = os.getenv('AVB_IBA_UTIL_REPORT_ADDRESS'),
     auth = (
         os.getenv('AVB_IBA_UTIL_REPORT_USER'),
         os.getenv('AVB_IBA_UTIL_REPORT_PASSWORD')

@@ -25,7 +25,7 @@ vib = float(sys.argv[4])
 
 # Request
 requests.post(
-    url = os.getenv('AVB_IBA_NTM_VIB_REPORT_ADDR'),
+    url = os.getenv('AVB_IBA_NTM_VIB_REPORT_ADDRESS'),
     auth = (
         os.getenv('AVB_IBA_NTM_VIB_REPORT_USER'),
         os.getenv('AVB_IBA_NTM_VIB_REPORT_PASSWORD')
