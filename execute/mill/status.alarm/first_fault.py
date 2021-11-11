@@ -7,7 +7,7 @@ import sys
 import json
 
 # Modules
-from . import prevent_billet
+import prevent_billet
 
 ##########################################################################################################################
 #                                                      PDA MILL STATUS                                                   #
