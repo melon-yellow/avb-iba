@@ -33,9 +33,13 @@ if not isinstance(time, str):
 if not isinstance(delta, (int, float)):
     raise Exception('key "delta" not valid')
 
+# Check Raise or Lower
 mod = '-'
 if delta > 0: mod = 'subiu'
 if delta < 0: mod = 'caiu'
+
+# Round Delta
+delta = round(delta, 1)
 
 # message
 msg = ' '.join([
@@ -47,9 +51,9 @@ msg = ' '.join([
 log = 'iba::pda_rod_lubc_level_diff'
 
 # send message
-avbot.sends(to='laminador_mantenedores', text=msg, log=log)
-avbot.sends(to='grupo_supervisores', text=msg, log=log)
-avbot.sends(to='grupo_automation', text=msg, log=log)
+# avbot.sends(to='laminador_mantenedores', text=msg, log=log)
+# avbot.sends(to='grupo_supervisores', text=msg, log=log)
+# avbot.sends(to='grupo_automation', text=msg, log=log)
 avbot.sends(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################
