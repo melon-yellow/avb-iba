@@ -3,7 +3,6 @@
 
 # Imports
 import os
-import sys
 import dotenv
 from py_wapp import Wapp
 
