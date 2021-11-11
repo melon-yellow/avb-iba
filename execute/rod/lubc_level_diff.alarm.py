@@ -38,8 +38,8 @@ mod = '-'
 if delta > 0: mod = 'subiu'
 if delta < 0: mod = 'caiu'
 
-# Round Delta
-delta = round(delta, 1)
+# Round Abs Delta
+delta = abs(round(delta, 1))
 
 # message
 msg = ' '.join([
