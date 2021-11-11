@@ -43,7 +43,7 @@ delta = abs(round(delta, 1))
 
 # message
 msg = ' '.join([
-    f'*Atenção!* ⚠️ O nivel da lub-C {mod}',
+    f'*Atenção!* ⚠️ O nível da lub-C {mod}',
     f'{delta}% em {time}!'
 ])
 
@@ -51,9 +51,9 @@ msg = ' '.join([
 log = 'iba::pda_rod_lubc_level_diff'
 
 # send message
-# avbot.sends(to='laminador_mantenedores', text=msg, log=log)
-# avbot.sends(to='grupo_supervisores', text=msg, log=log)
-# avbot.sends(to='grupo_automation', text=msg, log=log)
+avbot.sends(to='laminador_mantenedores', text=msg, log=log)
+avbot.sends(to='grupo_supervisores', text=msg, log=log)
+avbot.sends(to='grupo_automation', text=msg, log=log)
 avbot.sends(to='anthony', text=msg, log=log)
 
 ##########################################################################################################################
