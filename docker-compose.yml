@@ -18,8 +18,6 @@ services:
       - /usr/local/lib/python2.7/site-packages/
     ports:
       - "${AVB_IBA_PORT}:${AVB_IBA_PORT}"
-    depends_on:
-      - db
     restart: always
 
 ##########################################################################################################################
