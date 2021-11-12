@@ -33,9 +33,9 @@ data = json.loads(sys.argv[2])
 
 # Check Inputs
 if not isinstance(status, str):
-    raise Exception('key "status" not found')
+    raise Exception('invalid argument "status"')
 if not isinstance(data, dict):
-    raise Exception('key "data" not found')
+    raise Exception('invalid argument "data"')
 
 # Options Dictionary
 switcher = dict(
@@ -50,7 +50,7 @@ switcher = dict(
 
 # Check Status Key
 if status not in switcher:
-    raise Exception('key "status" not valid')
+    raise Exception('invalid argument "status"')
 
 # Get Message Text
 log = f'iba::pda_mill_status({status})'

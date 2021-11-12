@@ -3,6 +3,22 @@
 
 # Imports
 import json
+from typing import TypedDict, Tuple
+
+##########################################################################################################################
+
+class IPrevent(TypedDict):
+    master: Tuple[str,str]
+    area: 'IPreventAreas'
+
+class IPreventAreas(TypedDict):
+    CTR: Tuple[str,str,str,str,str,str]
+    MIL: Tuple[str,str,str,str,str,str]
+    ROD: Tuple[str,str,str,str]
+    RAX: Tuple[str,str,str,str]
+    VCH: Tuple[str,str]
+    COL: Tuple[str,str]
+    BARH: Tuple[str,str,str,str]
 
 ##########################################################################################################################
 #                                                   PDA MILL STATUS CAUSE                                                #
@@ -10,12 +26,7 @@ import json
 
 # Get General Cause
 def cause(
-    data: dict[str,
-        list[str] | dict[
-            str,
-            list[str]
-        ]
-    ],
+    data: IPrevent,
     status: str
 ):
     # Check Index
@@ -26,15 +37,15 @@ def cause(
     if len(data['master']) != 2: return ''
 
     # All Areas
-    areas = dict(
-        CTR = ['RM','IM','FM'],
-        MIL = ['RM','IM','FM'],
-        ROD = ['WR','STELM'],
-        RAX = ['WR','STELM'],
-        VCH = ['CH'],
-        COL = ['COOL'],
-        BARH = ['BARH','STACK']
-    )
+    areas = {
+        'CTR': ['RM','IM','FM'],
+        'MIL': ['RM','IM','FM'],
+        'ROD': ['WR','STELM'],
+        'RAX': ['WR','STELM'],
+        'VCH': ['CH'],
+        'COL': ['COOL'],
+        'BARH': ['BARH','STACK']
+    }
 
     # Check PLCs
     plcsr = list(areas.keys())
@@ -49,8 +60,8 @@ def cause(
 
     # Get Cause Text
     text = ''
-    if status == 'gap_off': text = '' + data['master'][0]
-    if status == 'cobble': text = '' + data['master'][1]
+    if status == 'gap_off': text = data['master'][0]
+    if status == 'cobble': text = data['master'][1]
     if text == '': return ''
 
     # Iter 16 Times
