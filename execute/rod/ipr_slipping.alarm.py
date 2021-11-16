@@ -37,8 +37,7 @@ msg = f'*Atenção!* ⚠️ O pinch roll 0{ipr} está patinando!'
 log = 'iba::pda_rod_ipr_slip_alarm'
 
 # send message
-avbot.sends(to='grupo_supervisores', text=msg, log=log)
-avbot.sends(to='grupo_automation', text=msg, log=log)
-avbot.sends(to='anthony', text=msg, log=log)
+avbot.sends(to='avb.laminacao.supervisao.g', text=msg, log=log)
+avbot.sends(to='avb.automacao.anthony', text=msg, log=log)
 
 ##########################################################################################################################

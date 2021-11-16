@@ -70,11 +70,11 @@ if status == 'cobble' or status == 'gap_off':
 
 # Send only Start/Stop Messages
 if status != 'exit_fur':
-    avbot.sends(to='gerencia_laminacao', text=msg, log=log)
+    avbot.sends(to='avb.laminacao.gerencia.g', text=msg, log=log)
 
 # Send Messages
-avbot.sends(to='grupo_supervisores', text=msg, log=log)
-avbot.sends(to='anthony', text=msg, log=log)
+avbot.sends(to='avb.laminacao.supervisao.g', text=msg, log=log)
+avbot.sends(to='avb.automacao.anthony', text=msg, log=log)
 
 ##########################################################################################################################
 

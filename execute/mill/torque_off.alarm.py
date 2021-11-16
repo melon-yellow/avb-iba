@@ -41,6 +41,6 @@ msg = f'*Atenção!* ⚠️ O Torque da gaiola {std} está anormal!'
 log = f'iba::pda_mill_m_off({std})'
 
 # send message
-avbot.sends(to='anthony', text=msg, log=log)
+avbot.sends(to='avb.automacao.anthony', text=msg, log=log)
 
 ##########################################################################################################################

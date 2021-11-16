@@ -48,9 +48,9 @@ msg = ' '.join([
 log = 'iba::pda_rod_ntm_casc_temp_alarm'
 
 # send message
-avbot.sends(to='laminador_mantenedores', text=msg, log=log)
-avbot.sends(to='grupo_supervisores', text=msg, log=log)
-avbot.sends(to='grupo_automation', text=msg, log=log)
-avbot.sends(to='anthony', text=msg, log=log)
+avbot.sends(to='avb.laminacao.manutencao.g', text=msg, log=log)
+avbot.sends(to='avb.laminacao.supervisao.g', text=msg, log=log)
+avbot.sends(to='avb.lamiancao.oficina.g', text=msg, log=log)
+avbot.sends(to='avb.automacao.anthony', text=msg, log=log)
 
 ##########################################################################################################################
