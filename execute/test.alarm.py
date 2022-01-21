@@ -29,7 +29,7 @@ msg = '*Atenção!* ⚠️ (avbot is running)'
 log = 'iba::test'
 
 # send message
-res = avbot.sends(to='anthony', text=msg, log=log)
+res = avbot.sends(to='avb.automacao.anthony', text=msg, log=log)
 print(res)
 
 ##########################################################################################################################
