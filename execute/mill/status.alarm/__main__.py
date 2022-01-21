@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from py_wapp.wapp import Wapp
 
 # Modules
-from .prevent_billet import cause
+from prevent_billet import cause
 
 ##########################################################################################################################
 
