@@ -41,8 +41,10 @@ if status not in switcher:
 log = f'bot::pda_trf_status({mq}, {status})'
 msg = switcher[status].format(mq)
 
-avbot.send(to='avb.trefila.jayron', text=msg, log=log)
-avbot.send(to='avb.automacao.anthony', text=msg, log=log)
+avbot.sends(to='avb.trefila.jayron', text=msg, log=log)
+avbot.sends(to='avb.automacao.anthony', text=msg, log=log)
+
+##########################################################################################################################
 
 # Request
 post(
