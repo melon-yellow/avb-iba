@@ -2,31 +2,31 @@
 ##########################################################################################################################
 
 # Imports
-import os
-import sys
-import json
-import requests
-import dotenv
+from os import getenv
+from sys import argv
+from json import loads
+from dotenv import load_dotenv
+from requests import post
 
 ##########################################################################################################################
 
 # Get Enviromental Variables
-dotenv.load_dotenv()
+load_dotenv()
 
 ##########################################################################################################################
 #                                                   LUB-C HIGH TEMP ALARM                                                #
 ##########################################################################################################################
 
 # Get Input Params
-timestamp = json.loads(sys.argv[1])
-util = json.loads(sys.argv[2])
+timestamp = loads(argv[1])
+util = loads(argv[2])
 
 # Request
-requests.post(
-    url = os.getenv('WHATSAPP_TARGET_GUSAL2_ADDRESS'),
+post(
+    url = getenv('WHATSAPP_TARGET_GUSAL2_ADDRESS'),
     auth = (
-        os.getenv('WHATSAPP_TARGET_GUSAL2_USER'),
-        os.getenv('WHATSAPP_TARGET_GUSAL2_PASSWORD')
+        getenv('WHATSAPP_TARGET_GUSAL2_USER'),
+        getenv('WHATSAPP_TARGET_GUSAL2_PASSWORD')
     ),
     json = {
         'action': 'pda_trf_report',

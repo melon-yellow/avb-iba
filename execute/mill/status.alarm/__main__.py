@@ -2,25 +2,25 @@
 ##########################################################################################################################
 
 # Imports
-import os
-import sys
-import json
-import dotenv
-from py_wapp import Wapp
+from os import getenv, path
+from sys import argv
+from json import loads, load
+from dotenv import load_dotenv
+from py_wapp.wapp import Wapp
 
 # Modules
-import prevent_billet
+from .prevent_billet import cause
 
 ##########################################################################################################################
 
 # Get Enviromental Variables
-dotenv.load_dotenv()
+load_dotenv()
 
 # Instance Whatsapp
 avbot = Wapp({
-    'address': os.getenv('WHATSAPP_TARGET_ADDRESS'),
-    'user': os.getenv('WHATSAPP_TARGET_USER'),
-    'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    'address': getenv('WHATSAPP_TARGET_ADDRESS'),
+    'user': getenv('WHATSAPP_TARGET_USER'),
+    'password': getenv('WHATSAPP_TARGET_PASSWORD')
 })
 
 ##########################################################################################################################
@@ -28,8 +28,8 @@ avbot = Wapp({
 ##########################################################################################################################
 
 # Get Input Params
-status = str(sys.argv[1])
-data = json.loads(sys.argv[2])
+status = str(argv[1])
+data = loads(argv[2])
 
 # Check Inputs
 if not isinstance(status, str):
@@ -58,13 +58,13 @@ msg = switcher[status]
 
 # Gap-Off First Fault
 if status == 'gap_off':
-    fileDir = os.path.dirname(os.path.abspath(__file__))
-    pbPath = os.path.abspath(os.path.join(fileDir, './prevent_billet.json'))
-    data = json.load(open(pbPath, 'r'))
+    fileDir = path.dirname(path.abspath(__file__))
+    pbPath = path.abspath(path.join(fileDir, './prevent_billet.json'))
+    data = load(open(pbPath, 'r'))
 
 # Get Cause
 if status == 'cobble' or status == 'gap_off':
-    cause = prevent_billet.cause(data=data, status=status)
+    cause = cause(data=data, status=status)
     if isinstance(cause, str) and cause != '':
         msg = f'{msg}\n_Motivo: {cause}_'
 

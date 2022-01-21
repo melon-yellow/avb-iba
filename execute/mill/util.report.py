@@ -2,32 +2,32 @@
 ##########################################################################################################################
 
 # Imports
-import os
-import sys
-import json
-import requests
-import dotenv
+from os import getenv
+from sys import argv
+from json import loads
+from requests import post
+from dotenv import load_dotenv
 
 ##########################################################################################################################
 
 # Get Enviromental Variables
-dotenv.load_dotenv()
+load_dotenv()
 
 ##########################################################################################################################
 #                                             UTILIZACAO - LAMINADOR & TREFILA                                           #
 ##########################################################################################################################
 
 # Get Input Params
-timestamp = json.loads(sys.argv[1])
-mill = json.loads(sys.argv[2])
-trf = json.loads(sys.argv[3])
+timestamp = loads(argv[1])
+mill = loads(argv[2])
+trf = loads(argv[3])
 
 # Request
-requests.post(
-    url = os.getenv('AVB_IBA_UTIL_REPORT_ADDRESS'),
+post(
+    url = getenv('AVB_IBA_UTIL_REPORT_ADDRESS'),
     auth = (
-        os.getenv('AVB_IBA_UTIL_REPORT_USER'),
-        os.getenv('AVB_IBA_UTIL_REPORT_PASSWORD')
+        getenv('AVB_IBA_UTIL_REPORT_USER'),
+        getenv('AVB_IBA_UTIL_REPORT_PASSWORD')
     ),
     json = {
         'action': 'pda_util',

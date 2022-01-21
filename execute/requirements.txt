@@ -1,3 +1,3 @@
 requests
 python-dotenv
--e git+https://github.com/anthony-freitas/py-wapp#egg=py-wapp
+-e git+https://github.com/melon-yellow/py-wapp#egg=py-wapp

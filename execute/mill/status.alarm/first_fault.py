@@ -2,31 +2,31 @@
 ##########################################################################################################################
 
 # Imports
-import os
-import sys
-import json
+from os import path
+from sys import argv
+from json import loads, dump
 
 # Modules
-import prevent_billet
+from .prevent_billet import cause
 
 ##########################################################################################################################
 #                                                      PDA MILL STATUS                                                   #
 ##########################################################################################################################
 
 # Get Input Params
-data = json.loads(sys.argv[1])
+data = loads(argv[1])
 
 # Check Received Data
-cause = prevent_billet.cause(data=data, status='gap_off')
+cause = cause(data=data, status='gap_off')
 if not isinstance(cause, str) or cause == '':
     raise Exception('invalid argument "data"')
 
 # Get Target JSON
-fileDir = os.path.dirname(os.path.abspath(__file__))
-pbPath = os.path.abspath(os.path.join(fileDir, './prevent_billet.json'))
+fileDir = path.dirname(path.abspath(__file__))
+pbPath = path.abspath(path.join(fileDir, './prevent_billet.json'))
 
 # Write to JSON File
-json.dump(data, open(pbPath, 'w'), indent=2)
+dump(data, open(pbPath, 'w'), indent=2)
 
 ##########################################################################################################################
 

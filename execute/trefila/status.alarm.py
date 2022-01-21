@@ -2,23 +2,23 @@
 ##########################################################################################################################
 
 # Imports
-import os
-import sys
-import json
-import dotenv
-import requests
-from py_wapp import Wapp
+from os import getenv
+from sys import argv
+from json import loads
+from dotenv import load_dotenv
+from requests import post
+from py_wapp.wapp import Wapp
 
 ##########################################################################################################################
 
 # Get Enviromental Variables
-dotenv.load_dotenv()
+load_dotenv()
 
 # Instance Whatsapp
 avbot = Wapp({
-    'address': os.getenv('WHATSAPP_TARGET_ADDRESS'),
-    'user': os.getenv('WHATSAPP_TARGET_USER'),
-    'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    'address': getenv('WHATSAPP_TARGET_ADDRESS'),
+    'user': getenv('WHATSAPP_TARGET_USER'),
+    'password': getenv('WHATSAPP_TARGET_PASSWORD')
 })
 
 ##########################################################################################################################
@@ -26,8 +26,8 @@ avbot = Wapp({
 ##########################################################################################################################
 
 # Get Input Params
-mq = json.loads(sys.argv[1])
-status = json.loads(sys.argv[2])
+mq = loads(argv[1])
+status = loads(argv[2])
 
 # Options Dictionary
 switcher = dict(
@@ -45,11 +45,11 @@ avbot.send(to='avb.trefila.jayron', text=msg, log=log)
 avbot.send(to='avb.automacao.anthony', text=msg, log=log)
 
 # Request
-requests.post(
-    url = os.getenv('WHATSAPP_TARGET_GUSAL2_ADDRESS'),
+post(
+    url = getenv('WHATSAPP_TARGET_GUSAL2_ADDRESS'),
     auth = (
-        os.getenv('WHATSAPP_TARGET_GUSAL2_USER'),
-        os.getenv('WHATSAPP_TARGET_GUSAL2_PASSWORD')
+        getenv('WHATSAPP_TARGET_GUSAL2_USER'),
+        getenv('WHATSAPP_TARGET_GUSAL2_PASSWORD')
     ),
     json = {
         'action': 'pda_trf_status',

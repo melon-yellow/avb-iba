@@ -2,23 +2,23 @@
 ##########################################################################################################################
 
 # Imports
-import json
-from typing import TypedDict, Tuple
+from json import dumps
+from typing import TypedDict
 
 ##########################################################################################################################
 
 class IPrevent(TypedDict):
-    master: Tuple[str,str]
+    master: tuple[str,str]
     area: 'IPreventAreas'
 
 class IPreventAreas(TypedDict):
-    CTR: Tuple[str,str,str,str,str,str]
-    MIL: Tuple[str,str,str,str,str,str]
-    ROD: Tuple[str,str,str,str]
-    RAX: Tuple[str,str,str,str]
-    VCH: Tuple[str,str]
-    COL: Tuple[str,str]
-    BARH: Tuple[str,str,str,str]
+    CTR: tuple[str,str,str,str,str,str]
+    MIL: tuple[str,str,str,str,str,str]
+    ROD: tuple[str,str,str,str]
+    RAX: tuple[str,str,str,str]
+    VCH: tuple[str,str]
+    COL: tuple[str,str]
+    BARH: tuple[str,str,str,str]
 
 ##########################################################################################################################
 #                                                   PDA MILL STATUS CAUSE                                                #
@@ -50,8 +50,8 @@ def cause(
     # Check PLCs
     plcsr = list(areas.keys())
     plcs = list(data['area'].keys())
-    if (json.dumps(plcsr) !=
-        json.dumps(plcs)): return ''
+    if (dumps(plcsr) !=
+        dumps(plcs)): return ''
 
     # Check Areas
     for p in plcs:

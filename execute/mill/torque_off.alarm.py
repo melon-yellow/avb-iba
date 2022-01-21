@@ -1,25 +1,25 @@
 
-raise Exception('disabled')
+#raise Exception('disabled')
 
 ##########################################################################################################################
 
 # Imports
-import os
-import sys
-import json
-import dotenv
-from py_wapp import Wapp
+from os import getenv
+from sys import argv
+from json import loads
+from dotenv import load_dotenv
+from py_wapp.wapp import Wapp
 
 ##########################################################################################################################
 
 # Get Enviromental Variables
-dotenv.load_dotenv()
+load_dotenv()
 
 # Instance Whatsapp
 avbot = Wapp({
-    'address': os.getenv('WHATSAPP_TARGET_ADDRESS'),
-    'user': os.getenv('WHATSAPP_TARGET_USER'),
-    'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    'address': getenv('WHATSAPP_TARGET_ADDRESS'),
+    'user': getenv('WHATSAPP_TARGET_USER'),
+    'password': getenv('WHATSAPP_TARGET_PASSWORD')
 })
 
 ##########################################################################################################################
@@ -27,8 +27,8 @@ avbot = Wapp({
 ##########################################################################################################################
 
 # Get Input Params
-t = json.loads(sys.argv[1])
-std = int(sys.argv[2])
+t = loads(argv[1])
+std = int(argv[2])
 
 # Check Inputs
 if not isinstance(std, (int, float)):

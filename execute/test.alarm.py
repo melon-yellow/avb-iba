@@ -2,20 +2,20 @@
 ##########################################################################################################################
 
 # Imports
-import os
-import dotenv
-from py_wapp import Wapp
+from os import getenv
+from dotenv import load_dotenv
+from py_wapp.wapp import Wapp
 
 ##########################################################################################################################
 
 # Get Enviromental Variables
-dotenv.load_dotenv()
+load_dotenv()
 
 # Instance Whatsapp
 avbot = Wapp({
-    'address': os.getenv('WHATSAPP_TARGET_ADDRESS'),
-    'user': os.getenv('WHATSAPP_TARGET_USER'),
-    'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    'address': getenv('WHATSAPP_TARGET_ADDRESS'),
+    'user': getenv('WHATSAPP_TARGET_USER'),
+    'password': getenv('WHATSAPP_TARGET_PASSWORD')
 })
 
 ##########################################################################################################################

@@ -2,33 +2,33 @@
 ##########################################################################################################################
 
 # Imports
-import os
-import sys
-import json
-import requests
-import dotenv
+from os import getenv
+from sys import argv
+from json import loads
+from dotenv import load_dotenv
+from requests import post
 
 ##########################################################################################################################
 
 # Get Enviromental Variables
-dotenv.load_dotenv()
+load_dotenv()
 
 ##########################################################################################################################
 #                                                    NTM VIBRATION REPORT                                                #
 ##########################################################################################################################
 
 # Get Input Params
-timestamp = json.loads(sys.argv[1])
-params = json.loads(sys.argv[2])
-rpm = float(sys.argv[3])
-vib = float(sys.argv[4])
+timestamp = loads(argv[1])
+params = loads(argv[2])
+rpm = float(argv[3])
+vib = float(argv[4])
 
 # Request
-requests.post(
-    url = os.getenv('AVB_IBA_NTM_VIB_REPORT_ADDRESS'),
+post(
+    url = getenv('AVB_IBA_NTM_VIB_REPORT_ADDRESS'),
     auth = (
-        os.getenv('AVB_IBA_NTM_VIB_REPORT_USER'),
-        os.getenv('AVB_IBA_NTM_VIB_REPORT_PASSWORD')
+        getenv('AVB_IBA_NTM_VIB_REPORT_USER'),
+        getenv('AVB_IBA_NTM_VIB_REPORT_PASSWORD')
     ),
     json = {
         'action': 'pda_rod_vib_ntm',

@@ -2,21 +2,21 @@
 ##########################################################################################################################
 
 # Imports
-import os
-import sys
-import dotenv
-from py_wapp import Wapp
+from os import getenv
+from sys import argv
+from dotenv import load_dotenv
+from py_wapp.wapp import Wapp
 
 ##########################################################################################################################
 
 # Get Enviromental Variables
-dotenv.load_dotenv()
+load_dotenv()
 
 # Instance Whatsapp
 avbot = Wapp({
-    'address': os.getenv('WHATSAPP_TARGET_ADDRESS'),
-    'user': os.getenv('WHATSAPP_TARGET_USER'),
-    'password': os.getenv('WHATSAPP_TARGET_PASSWORD')
+    'address': getenv('WHATSAPP_TARGET_ADDRESS'),
+    'user': getenv('WHATSAPP_TARGET_USER'),
+    'password': getenv('WHATSAPP_TARGET_PASSWORD')
 })
 
 ##########################################################################################################################
@@ -24,8 +24,8 @@ avbot = Wapp({
 ##########################################################################################################################
 
 # Get Input Params
-time = str(sys.argv[1])
-delta = float(sys.argv[2])
+time = str(argv[1])
+delta = float(argv[2])
 
 # Check Inputs
 if not isinstance(time, str):
