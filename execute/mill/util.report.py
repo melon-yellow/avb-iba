@@ -5,8 +5,8 @@
 from os import getenv
 from sys import argv
 from json import loads
-from requests import post
 from dotenv import load_dotenv
+from requests import post
 
 ##########################################################################################################################
 
