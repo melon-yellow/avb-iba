@@ -17,8 +17,8 @@ from prevent_billet import cause
 data = loads(argv[1])
 
 # Check Received Data
-cause = cause(data=data, status='gap_off')
-if not isinstance(cause, str) or cause == '':
+text = cause(data=data, status='gap_off')
+if not isinstance(text, str) or text == '':
     raise Exception('invalid argument "data"')
 
 # Get Target JSON
